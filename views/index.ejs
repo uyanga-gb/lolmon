@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+            var socket = io.connect();
+            // var ctx = document.getElementById('canvas').getContext('2d');
+            socket.on('connect', function (data) {
+              console.log('BROWSER::WE ARE USING SOCKETS!');
+            })
+          socket.on("image", function(info) {
+            console.log("receiving in index")
+            document.getElementById('imgid').src = 'data:image/jpeg;base64,' + info;
+});
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <img id="imgid" src="" alt="image to display">
+  </body>
+</html>
